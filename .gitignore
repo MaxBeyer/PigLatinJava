@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Compiled class file
 *.class
 
@@ -24,6 +25,8 @@ hs_err_pid*
 /.metadata/
  
 =======
+=======
+>>>>>>> parent of 04aef51... fuck you
 # Compiled class file
 *.class
 
@@ -46,4 +49,7 @@ hs_err_pid*
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+<<<<<<< HEAD
+>>>>>>> parent of 04aef51... fuck you
+=======
 >>>>>>> parent of 04aef51... fuck you
