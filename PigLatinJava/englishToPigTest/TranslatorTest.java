@@ -11,8 +11,8 @@ public class TranslatorTest {
 	@Test
 	public void translateSentanceTest() {
 		Translator translator = new Translator();
-		String result = translator.translateSentance("This is a test sentance.");
-		assertEquals("Is-thay is-yay a-yay est-tay entance-say.", result);
+		String result = translator.translateSentance("This is a test Sentance.");
+		assertEquals("Is-thay is-yay a-yay est-tay Entance-say.", result);
 	}
 	
 	@Test
@@ -40,6 +40,13 @@ public class TranslatorTest {
 		Translator translator = new Translator();
 		int result = translator.findFirstVowel("Strngth");
 		assertEquals(-1, result);
+	}
+	
+	@Test
+	public void findAndMovePunctuation() {
+		Translator translator = new Translator();
+		String result = translator.findAndMovePunctuation("est.-tay");
+		assertEquals("est-tay.", result);
 	}
 
 }

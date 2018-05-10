@@ -11,8 +11,12 @@ public class Translator {
 	}
 
 	public String translateSentance(String stringToTranslate) {
-		// TODO Auto-generated method stub
-		return null;
+		String pigSentance = "";
+		String[] wordsArray = stringToTranslate.split(" ");
+		for(String word: wordsArray) {
+			pigSentance += translateWord(word) + " ";
+		}
+		return pigSentance;
 	}
 	
 	public String translateWord(String word) {
@@ -20,6 +24,10 @@ public class Translator {
 		String pigString = "";
 		if(firstVowelIndex > 0) {
 			pigString = word.substring(firstVowelIndex) + "-" + word.substring(0, firstVowelIndex) + "ay";
+			if(!pigString.equals(pigString.toLowerCase())) {
+				pigString = pigString.toLowerCase();
+				pigString = pigString.substring(0, 1).toUpperCase() + pigString.substring(1);
+			}
 		} else {
 			pigString = word + "-yay";
 		}
@@ -41,12 +49,27 @@ public class Translator {
 		vowels.add("O");
 		vowels.add("U");
 		for(String vowel:vowels) {
-			if(word.indexOf(vowel) > 0) {
+			int initialIndex = 100; //this value allows us to check words with multiple vowels, since no word in english will have 100 consanants before a vowel shows up
+			if(word.indexOf(vowel) > 0 && word.indexOf(vowel) < initialIndex) {
 				vowelIndex =  word.indexOf(vowel);
-				break;
 			}
 		}
 		return vowelIndex;
+	}
+
+	public String[] scrapeWords(String sentance) {
+		String[] wordsArray = sentance.split(" ");
+		return wordsArray;
+	}
+
+	public String findAndMovePunctuation(String word) {
+		int punctuationIndex = word.indexOf("[.,;:?!]");
+		if(punctuationIndex >= 0) {
+			char punctuation = word.charAt(punctuationIndex);
+			word.replaceAll("[.,;:?!]", "");
+			word += punctuation;
+		}
+		return word;
 	}
 
 }
