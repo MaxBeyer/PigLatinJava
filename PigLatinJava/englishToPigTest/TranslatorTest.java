@@ -11,7 +11,7 @@ public class TranslatorTest {
 	@Test
 	public void translateSentanceTest() {
 		Translator translator = new Translator();
-		String result = translator.translateSentance("This is a test Sentance.");
+		String result = translator.translateSentence("This is a test Sentance.");
 		assertEquals("Is-thay is-yay a-yay est-tay Entance-say.", result);
 	}
 	

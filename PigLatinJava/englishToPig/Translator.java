@@ -1,6 +1,7 @@
 package englishToPig;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Translator {
@@ -10,13 +11,19 @@ public class Translator {
 
 	}
 
-	public String translateSentance(String stringToTranslate) {
-		String pigSentance = "";
-		String[] wordsArray = stringToTranslate.split(" ");
-		for(String word: wordsArray) {
-			pigSentance += translateWord(word) + " ";
+	public String translateSentence(String stringToTranslate) {
+		// is it possible to use the replace function instead of deconstructing and reconstructing the sentence?
+		//stringToTranslate.replaceAll("regex for words including ' character", thatWordRunThroughTheWordTranslator);
+		String pigSentence = "";
+		List<String> wordsArray = new ArrayList<String>(Arrays.asList(stringToTranslate.split(" ")));
+		int arrayLength = wordsArray.size();
+		for(int i = 0; i < arrayLength - 1; i++) { //spaces out each word up until the last word
+			pigSentence += translateWord(wordsArray.get(i)) + " ";
+			//strip ending punctuation out with regex
+			//bring puntuation to end of word using -1 index
 		}
-		return pigSentance;
+		pigSentence += translateWord(wordsArray.get(-1)); // appends final word without a trailing space
+		return pigSentence;
 	}
 	
 	public String translateWord(String word) {
